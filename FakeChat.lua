@@ -230,4 +230,4 @@ end)
 
 local a = Instance.new("Hint",CoreGui)
 a.Text = "Fixed the command bar opening with every button pressed (forgot to add '()')"
-task.delay(10,Destroy(a))
+task.delay(10,a.Destroy(a))
