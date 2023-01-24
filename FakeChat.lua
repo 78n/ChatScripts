@@ -21,6 +21,10 @@ local ChatService = game:GetService("Chat")
 local CoreGui = game:GetService("CoreGui")
 local Players = game:GetService("Players")
 local rs = game:GetService('RunService')
+if not Players.LocalPlayer then
+	Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+end
+local lp = Players.LocalPlayer
 local connections = FakeChatStorage.Connections
 local plrlist = {}
 
@@ -104,15 +108,10 @@ local function fakechat(plr,msg,whisper)
 end
 
 local classtypes = {
-	['random'] = function()
-		local plrlistCache = plrlist
-		plrlistCache[lp] = nil
-		return {plrlistCache[math.random(1, #plrlistCache)]}
-	end,
 	['me'] = function()
 		return {lp}
 	end,
-    ["others"] = function(speaker)
+    ["others"] = function()
 		local plrlistCache = plrlist
 		plrlistCache[lp] = nil
 		return plrlistCache
