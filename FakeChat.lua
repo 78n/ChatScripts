@@ -220,7 +220,7 @@ UserInputService.InputBegan:Connect(function(input, gp)
     if not gp then
         if input.UserInputType == Enum.UserInputType.Keyboard then
             local key = input.KeyCode
-            if key == Enum.KeyCode.Quote then
+            if key == prefix or Enum.KeyCode.Quote then
 				rs.Heartbeat:Wait()
                 toggle()
             end
